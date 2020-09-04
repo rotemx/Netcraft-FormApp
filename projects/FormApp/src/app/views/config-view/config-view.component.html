@@ -1,6 +1,13 @@
 <div class="config-view view">
 
-  <textarea [(ngModel)]="formService.config">
+  <textarea
+    #configtextarea
+    [value]="formService.getConfigJson()">
 
   </textarea>
+
+  <button mat-raised-button color="primary" (click)="formService.saveConfigJson(configtextarea.value)">
+    Save
+  </button>
+
 </div>

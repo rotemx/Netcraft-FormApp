@@ -10,16 +10,16 @@ export enum FieldTypes {
 export interface Field {
   type: FieldTypes
   prop: string
-  disabled : boolean
-  validators : ValidatorFn[]
+  disabled?: boolean
+  validators?: ValidatorFn[]
 }
 
 
 export interface DynamicSection {
-  title:string
+  title: string
   fields: Field[]
   okFn?: () => Promise<any>
-  prop:string
+  prop: string
 }
 
 export interface DynamicForm {
@@ -29,7 +29,7 @@ export interface DynamicForm {
 
 
 export interface IConfig {
-  forms: DynamicForm[]
+  forms?: DynamicForm[]
 }
 
 
@@ -39,8 +39,29 @@ export interface IConfig {
 export class FormService {
 
   constructor() {
+    window['formService'] = this;
   }
 
+  getConfigJson (){
+    return JSON.stringify(this.config)
+  }
 
-  config: IConfig = {};
+  saveConfigJson(json:string){
+    this.config = JSON.parse(json);
+
+  }
+
+  config: IConfig = {
+    forms: [{
+      name    : 'User',
+      sections: [{
+        title : 'General',
+        prop  : 'general',
+        fields: [{
+          prop: 'name',
+          type: FieldTypes.Text
+        }]
+      }]
+    }]
+  };
 }

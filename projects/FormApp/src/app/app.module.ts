@@ -9,6 +9,7 @@ import { FormViewComponent }       from './views/form-view/form-view.component';
 import {MatToolbarModule}          from '@angular/material/toolbar';
 import {MatSidenavModule}          from '@angular/material/sidenav';
 import {FormsModule}               from '@angular/forms';
+import {MatButtonModule}           from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -16,14 +17,15 @@ import {FormsModule}               from '@angular/forms';
     LayoutComponent,
     FormViewComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    FormsModule,
+    MatButtonModule
+  ],
   providers: [],
   bootstrap: [LayoutComponent]
 })
