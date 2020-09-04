@@ -1,36 +1,7 @@
 import {Injectable}  from '@angular/core';
-import {ValidatorFn} from '@angular/forms';
-
-export enum FieldTypes {
-  Text   = 'text',
-  Number = 'number',
-  Color  = 'color'
-}
-
-export interface Field {
-  type: FieldTypes
-  prop: string
-  disabled?: boolean
-  validators?: ValidatorFn[]
-}
-
-
-export interface DynamicSection {
-  title: string
-  fields: Field[]
-  okFn?: () => Promise<any>
-  prop: string
-}
-
-export interface DynamicForm {
-  name: string
-  sections: DynamicSection[]
-}
-
-
-export interface IConfig {
-  forms?: DynamicForm[]
-}
+import {Validators}  from '@angular/forms';
+import {DynamicForm} from '../types/interfaces/dynamic-form';
+import {FieldTypes}  from '../types/enums/field-types';
 
 
 @Injectable({
@@ -42,26 +13,61 @@ export class FormService {
     window['formService'] = this;
   }
 
-  getConfigJson (){
-    return JSON.stringify(this.config)
+  getConfigJson() {
+    return JSON.stringify(this.forms);
   }
 
-  saveConfigJson(json:string){
-    this.config = JSON.parse(json);
+  saveConfigJson(json: string) {
+    this.forms = JSON.parse(json);
 
   }
 
-  config: IConfig = {
-    forms: [{
-      name    : 'User',
-      sections: [{
-        title : 'General',
-        prop  : 'general',
-        fields: [{
-          prop: 'name',
-          type: FieldTypes.Text
-        }]
+  forms: DynamicForm[] = [{
+    title   : 'New User',
+    sections: [
+      {
+        propertyName: 'details',
+        title       : 'User Details',
+        fields      : [
+          {
+            type        : FieldTypes.Text,
+            placeholder : 'enter first name',
+            label       : 'First Name',
+            propertyName: 'firstName',
+            validators  : [Validators.minLength(5)]
+          },
+          {
+            type        : FieldTypes.Text,
+            placeholder : 'enter last name',
+            label       : 'Last Name',
+            propertyName: 'lastName'
+          },
+          {
+            type        : FieldTypes.Color,
+            label       : 'Favorite Color',
+            propertyName: 'favoriteColor'
+          }
+        ]
+
+      },
+      {
+        propertyName: 'work',
+        title       : 'Work',
+        fields      : [
+          {
+            type        : FieldTypes.Text,
+            placeholder : 'Enter Employer Name',
+            label       : 'Employer Name',
+            propertyName: 'employerName',
+            validators  : []
+          },
+          {
+            type        : FieldTypes.Text,
+            placeholder : 'Enter Work Address',
+            label       : 'Work Address',
+            propertyName: 'workAddress'
+          }
+        ]
       }]
-    }]
-  };
+  }];
 }

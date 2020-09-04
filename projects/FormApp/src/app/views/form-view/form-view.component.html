@@ -1,1 +1,6 @@
-<p>form-view works!</p>
+<div class="form-view view">
+  <app-dynamic-form
+    *ngFor="let form of formService.forms"
+    [form]="form"
+  ></app-dynamic-form>
+</div>

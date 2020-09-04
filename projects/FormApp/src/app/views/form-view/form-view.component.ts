@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormService}         from '../../services/form.service';
 
 @Component({
   selector: 'app-form-view',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(public formService:FormService) { }
 
   ngOnInit(): void {
   }
