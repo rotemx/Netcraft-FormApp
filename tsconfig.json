@@ -6,5 +6,12 @@
 */
 {
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./projects/FormApp/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/FormApp/tsconfig.spec.json"
+    }
+]
 }
