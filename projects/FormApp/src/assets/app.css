@@ -57,3 +57,30 @@ a.side-link {
     background: #eee;
     text-decoration: none;
 }
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+app-config-view {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+}
+
+.config-view.view {
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    width: 100%;
+    flex: 1;
+}
+
+* {box-sizing: border-box;}
+
+textarea {
+    flex: 1;
+}
