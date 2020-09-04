@@ -14,10 +14,11 @@ export class FormService {
   }
 
   getConfigJson() {
-    return JSON.stringify(this.forms);
+    return JSON.stringify(this.forms, null, 2);
   }
 
   saveConfigJson(json: string) {
+    console.log(json, 'json');
     this.forms = JSON.parse(json);
 
   }
@@ -68,6 +69,7 @@ export class FormService {
             propertyName: 'workAddress'
           }
         ]
-      }]
+      }
+    ]
   }];
 }

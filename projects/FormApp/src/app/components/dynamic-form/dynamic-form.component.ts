@@ -19,16 +19,18 @@ export class DynamicFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const sectionControls = this.form.sections.reduce((dict: any, section, i, arr) => {
-      const fieldControls = section.fields
-                                   .reduce((dict: any, field: DynamicField, i, array) => {
-                                     dict[field.propertyName] = new FormControl('', field.validators || []);
-                                     return dict;
-                                   }, {});
-      dict[section.propertyName] = new FormGroup(fieldControls);
-      return dict;
-    }, {});
-    this.formGroup = new FormGroup(sectionControls);
+    const sectionControls = this.form.sections
+                                .reduce((section_dict: any, section) => {
+                                  const fieldControls = section.fields
+                                                               .reduce((field_dict: any, field: DynamicField) => {
+                                                                 field_dict[field.propertyName] = new FormControl('', field.validators || []);
+                                                                 return field_dict;
+                                                               }, {});
+
+                                  section_dict[section.propertyName] = new FormGroup(fieldControls);
+                                  return section_dict;
+                                }, {});
+    this.formGroup        = new FormGroup(sectionControls);
   }
 
 }

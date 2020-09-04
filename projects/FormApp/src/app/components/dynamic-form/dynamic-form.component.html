@@ -1,16 +1,15 @@
 <div class="dyn-form">
 	<h2>{{form.title}}</h2>
 
-	<ng-container *ngIf="form && formGroup">
+	<ng-container >
 		<form [formGroup]="formGroup">
 			<app-dynamic-section
 					*ngFor="let section of form.sections"
 					[section]="section"
-					[formControlName]="section.propertyName"
+					[formGroupName]="section.propertyName"
 					[formGroup]="formGroup.controls[section.propertyName]"
 			>
 			</app-dynamic-section>
-
 		</form>
 	</ng-container>
 </div>
