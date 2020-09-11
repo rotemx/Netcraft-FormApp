@@ -3,6 +3,10 @@ import {Validators}  from '@angular/forms';
 import {DynamicForm} from '../types/interfaces/dynamic-form';
 import {FieldTypes}  from '../types/enums/field-types';
 
+export const validatorDict = {
+  'maxLength6': Validators.maxLength(6),
+  'maxLength7': Validators.maxLength(7),
+}
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +15,7 @@ export class FormService {
 
   constructor() {
     window['formService'] = this;
+    console.log(Validators.max(4), 'Validators.minLength(5)');
   }
 
   getConfigJson() {
@@ -20,7 +25,6 @@ export class FormService {
   saveConfigJson(json: string) {
     console.log(json, 'json');
     this.forms = JSON.parse(json);
-
   }
 
   forms: DynamicForm[] = [{
@@ -35,11 +39,19 @@ export class FormService {
             placeholder : 'enter first name',
             label       : 'First Name',
             propertyName: 'firstName',
-            validators  : [Validators.minLength(5)]
+            validators  : [
+              "maxLength6"
+            ]
           },
           {
             type        : FieldTypes.Text,
             placeholder : 'enter last name',
+            label       : 'Last Name',
+            propertyName: 'lastName'
+          },
+          {
+            type        : FieldTypes.Text,
+            placeholder : 'enter age',
             label       : 'Last Name',
             propertyName: 'lastName'
           },

@@ -1,5 +1,5 @@
-import {Component, forwardRef, Input}                       from '@angular/core';
-import {DynamicSection}                                     from '../../types/interfaces/dynamic-section';
+import {Component, forwardRef, HostBinding, Input} from '@angular/core';
+import {DynamicSection}                            from '../../types/interfaces/dynamic-section';
 import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FieldTypes}                                         from '../../types/enums/field-types';
 
@@ -16,6 +16,9 @@ import {FieldTypes}                                         from '../../types/en
   ]
 })
 export class DynamicSectionComponent implements ControlValueAccessor {
+  @HostBinding('class.invalid') get invalid() { return this.formGroup.touched && this.formGroup.invalid; }
+
+
   change: any = () => {
   };
   touch: any  = () => {

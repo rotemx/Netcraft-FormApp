@@ -12,6 +12,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule}                  from '@angular/material/button';
 import {DynamicFormComponent}             from './components/dynamic-form/dynamic-form.component';
 import {DynamicSectionComponent}          from './components/dynamic-section/dynamic-section.component';
+import { ProductFormViewComponent } from './views/product-form-view/product-form-view.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {DynamicSectionComponent}          from './components/dynamic-section/dyn
     ConfigViewComponent,
     LayoutComponent,
     FormViewComponent,
-    DynamicSectionComponent
+    DynamicSectionComponent,
+    ProductFormViewComponent
   ],
   imports: [
     BrowserModule,
