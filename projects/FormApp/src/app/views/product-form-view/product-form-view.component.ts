@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {DynamicForm}       from '../../types/interfaces/dynamic-form';
 import {FieldTypes}        from '../../types/enums/field-types';
 
-
 export interface Product {
   id: string
   name: string
@@ -21,6 +20,7 @@ export interface Product {
 export class ProductFormViewComponent implements OnInit {
 
   constructor() {
+    window['productFormViewComponent'] = this;
   }
 
   ngOnInit(): void {
@@ -52,7 +52,6 @@ export class ProductFormViewComponent implements OnInit {
             label       : 'Price',
             placeholder : 'enter price',
             type        : FieldTypes.Number,
-            required : true
           }
         ]
       },
@@ -68,7 +67,7 @@ export class ProductFormViewComponent implements OnInit {
           },
           {
             propertyName: 'rating',
-            label       : 'Product Id',
+            label       : 'Rating',
             placeholder : 'enter rating',
             type        : FieldTypes.Number
           },

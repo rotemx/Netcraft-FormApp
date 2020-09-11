@@ -26,7 +26,7 @@
             class="dyn-field"
             [class.invalid]="formGroup.controls[field.propertyName].invalid && !formGroup.controls[field.propertyName].pristine"
           >
-            <label>{{field.label}}</label>
+            <label>{{field.label}}<sup class="red-asterisk" *ngIf="field.required">*</sup></label>
 
             <input
               type="number"
@@ -38,7 +38,7 @@
             class="dyn-field"
             [class.invalid]="formGroup.controls[field.propertyName].invalid && !formGroup.controls[field.propertyName].pristine"
           >
-            <label>{{field.label}}</label>
+            <label>{{field.label}}<sup class="red-asterisk" *ngIf="field.required">*</sup></label>
 
             <input
               type="color"
@@ -50,6 +50,7 @@
           </div>
         </ng-container>
       </ng-container>
+        <button [disabled]="formGroup.invalid || formGroup.pristine">Save</button>
     </form>
   </ng-container>
 </div>

@@ -5,8 +5,8 @@ import {FieldTypes}  from '../types/enums/field-types';
 
 export const validatorDict = {
   'maxLength6': Validators.maxLength(6),
-  'maxLength7': Validators.maxLength(7),
-}
+  'maxLength7': Validators.maxLength(7)
+};
 
 @Injectable({
   providedIn: 'root'
@@ -40,20 +40,23 @@ export class FormService {
             label       : 'First Name',
             propertyName: 'firstName',
             validators  : [
-              "maxLength6"
-            ]
+              'maxLength6'
+            ],
+            required    : true
           },
           {
             type        : FieldTypes.Text,
             placeholder : 'enter last name',
             label       : 'Last Name',
-            propertyName: 'lastName'
+            propertyName: 'lastName',
+            required    : true
+
           },
           {
             type        : FieldTypes.Text,
             placeholder : 'enter age',
-            label       : 'Last Name',
-            propertyName: 'lastName'
+            label       : 'Age',
+            propertyName: 'age'
           },
           {
             type        : FieldTypes.Color,
